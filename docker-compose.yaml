@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    image: hibernate-project:latest
+    container_name: hiberProject-app-container
+    platform: linux/amd64
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  db:
+    image: mysql:latest
+    container_name: mysql_db_for_hibernate_project
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: world
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - persistent:/var/lib/mysql
+    healthcheck:
+      test: /bin/sh -c "[ -d /var/lib/mysql/world ]"
+      interval: 2s
+      timeout: 10s
+      retries: 1800 # 2s*1800 = 3600s = 60min
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 10s
+      retries: 1800
+volumes:
+  persistent:
