@@ -1,4 +1,4 @@
-package com.javarush.ua.lutscenko.domain;
+package com.javarush.ua.lutscenko.entity;
 
 public enum Continent {
     ASIA,

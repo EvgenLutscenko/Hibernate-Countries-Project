@@ -1,15 +1,16 @@
-package com.javarush.ua.lutscenko.dao;
+package com.javarush.ua.lutscenko.repository.impl;
 
-import com.javarush.ua.lutscenko.domain.City;
+import com.javarush.ua.lutscenko.entity.City;
+import com.javarush.ua.lutscenko.repository.CityRepo;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class CityDAO {
+public class CityRepositoryImpl implements CityRepo {
     private final SessionFactory sessionFactory;
 
-    public CityDAO(SessionFactory sessionFactory) {
+    public CityRepositoryImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

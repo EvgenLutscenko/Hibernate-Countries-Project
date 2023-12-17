@@ -1,6 +1,6 @@
 package com.javarush.ua.lutscenko.redis;
 
-import com.javarush.ua.lutscenko.domain.Continent;
+import com.javarush.ua.lutscenko.entity.Continent;
 import lombok.Data;
 
 import java.math.BigDecimal;

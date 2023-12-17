@@ -1,15 +1,16 @@
-package com.javarush.ua.lutscenko.dao;
+package com.javarush.ua.lutscenko.repository.impl;
 
-import com.javarush.ua.lutscenko.domain.Country;
+import com.javarush.ua.lutscenko.entity.Country;
+import com.javarush.ua.lutscenko.repository.CountryRepo;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class CountryDAO {
+public class CountryRepositoryImpl implements CountryRepo {
     private final SessionFactory sessionFactory;
 
-    public CountryDAO(SessionFactory sessionFactory) {
+    public CountryRepositoryImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
